@@ -21,7 +21,7 @@ const pbnb = (month + day) % 2 === 0; // true : 빠밥
 const yyyymmdd = moment().format("YYYYMMDD");
 
 function App() {
-  const URL = "/smartfood/todaymenuGf/todayMenu_nList_pro.do";
+  const URL = "http://3.36.127.146:8000/smartfood/todaymenuGf/todayMenu_nList_pro.do";
   
   const [breakfirst, setBreakfirst]  = useState([])
   const [lunch, setLunch]  = useState([])
