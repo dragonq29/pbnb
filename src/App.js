@@ -3,6 +3,7 @@ import "./App.css";
 import gfood from "./gfood";
 import axios from "axios";
 import moment from "moment";
+import { DiscussionEmbed } from "disqus-react";
 
 const today = new Date();
 const day = today.getDay();
@@ -21,39 +22,48 @@ const pbnb = (month + day) % 2 === 0; // true : 빠밥
 const yyyymmdd = moment().format("YYYYMMDD");
 
 function App() {
-  const URL = "http://3.36.127.146:8000/smartfood/todaymenuGf/todayMenu_nList_pro.do";
-  
-  const [breakfirst, setBreakfirst]  = useState([])
-  const [lunch, setLunch]  = useState([])
-  const [dinner, setDinner]  = useState([])
+  const URL =
+    "https://pbnb.ga/smartfood/todaymenuGf/todayMenu_nList_pro.do";
 
-   
+  const [breakfirst, setBreakfirst] = useState([]);
+  const [lunch, setLunch] = useState([]);
+  const [dinner, setDinner] = useState([]);
+
   const requestParams = {
     end_dt: yyyymmdd,
     st_dt: yyyymmdd,
     bizplc_cd: "10095",
-  }
+  };
 
   useEffect(() => {
     axios
-    .post(
-      URL,
-      requestParams
-    )
-    .then(function (response) {
-      const dataList = response.data.todayList;
-      setBreakfirst(dataList.filter(m => m.meald_fg_cd === "0001").map((menu) => ({name: menu.disp_nm, coner_fg: menu.coner_fg_cd})));
-      setLunch(dataList.filter(m => m.meald_fg_cd === "0002").map((menu) => ({name: menu.disp_nm, coner_fg: menu.coner_fg_cd})));
-      setDinner(dataList.filter(m => m.meald_fg_cd === "0003").map((menu) => ({name: menu.disp_nm, coner_fg: menu.coner_fg_cd})));
-      // console.log(dataList.filter(m => m.meald_fg_cd === "0003").map((menu) => ({name: menu.disp_nm})));
-    })
-    .catch(function (error) {
-      // 오류발생시 실행
-    });
+      .post(URL, requestParams)
+      .then(function (response) {
+        const dataList = response.data.todayList;
+        setBreakfirst(
+          dataList
+            .filter((m) => m.meald_fg_cd === "0001")
+            .map((menu) => ({ name: menu.disp_nm, coner_fg: menu.coner_fg_cd }))
+        );
+        setLunch(
+          dataList
+            .filter((m) => m.meald_fg_cd === "0002")
+            .map((menu) => ({ name: menu.disp_nm, coner_fg: menu.coner_fg_cd }))
+        );
+        setDinner(
+          dataList
+            .filter((m) => m.meald_fg_cd === "0003")
+            .map((menu) => ({ name: menu.disp_nm, coner_fg: menu.coner_fg_cd }))
+        );
+        // console.log(dataList.filter(m => m.meald_fg_cd === "0003").map((menu) => ({name: menu.disp_nm})));
+      })
+      .catch(function (error) {
+        // 오류발생시 실행
+      });
   }, []);
-  
+
   return (
-    <div>
+    <>
       <div id="header">
         <h1>
           {month}/{date} {dayNames[day]}
@@ -62,26 +72,52 @@ function App() {
         <div></div>
         <div>조식 - 간편식</div>
         <ul>
-          {breakfirst.filter((menu) => menu.coner_fg ==="0002").map((menu) => <li>{menu.name}</li>)}          
+          {breakfirst
+            .filter((menu) => menu.coner_fg === "0002")
+            .map((menu) => (
+              <li>{menu.name}</li>
+            ))}
         </ul>
         <div>조식</div>
         <ul>
-          {breakfirst.filter((menu) => menu.coner_fg ==="0001").map((menu) => <li>{menu.name}</li>)}          
+          {breakfirst
+            .filter((menu) => menu.coner_fg === "0001")
+            .map((menu) => (
+              <li>{menu.name}</li>
+            ))}
         </ul>
         <div>중식 - 간편식</div>
         <ul>
-          {lunch.filter((menu) => menu.coner_fg ==="0002").map((menu) => <li>{menu.name}</li>)}          
+          {lunch
+            .filter((menu) => menu.coner_fg === "0002")
+            .map((menu) => (
+              <li>{menu.name}</li>
+            ))}
         </ul>
         <div>중식</div>
         <ul>
-          {lunch.filter((menu) => menu.coner_fg ==="0001").map((menu) => <li>{menu.name}</li>)}          
+          {lunch
+            .filter((menu) => menu.coner_fg === "0001")
+            .map((menu) => (
+              <li>{menu.name}</li>
+            ))}
         </ul>
         <div>석식</div>
         <ul>
-          {dinner.map((menu) => <li>{menu.name}</li>)}          
+          {dinner.map((menu) => (
+            <li>{menu.name}</li>
+          ))}
         </ul>
       </div>
-    </div>
+      <DiscussionEmbed
+        shortname="pbnb"
+        config={{
+          url: "https://pbnb.disqus.com",
+          identifier: "pbnb",
+          title: "빠밥늦밥",
+        }}
+      />
+    </>
   );
 }
 
