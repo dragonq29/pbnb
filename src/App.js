@@ -3,7 +3,6 @@ import "./App.css";
 import gfood from "./gfood";
 import axios from "axios";
 import moment from "moment";
-import { DiscussionEmbed } from "disqus-react";
 
 const today = new Date();
 const day = today.getDay();
@@ -109,14 +108,6 @@ function App() {
           ))}
         </ul>
       </div>
-      <DiscussionEmbed
-        shortname="pbnb"
-        config={{
-          url: "https://pbnb.disqus.com",
-          identifier: "pbnb",
-          title: "빠밥늦밥",
-        }}
-      />
     </>
   );
 }
