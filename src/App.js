@@ -23,7 +23,7 @@ const yyyymmdd = moment().format("YYYYMMDD");
 
 function App() {
   const URL =
-    "https://pbnb.ga/smartfood/todaymenuGf/todayMenu_nList_pro.do";
+    "https://pbnb.duckdns.org/smartfood/todaymenuGf/todayMenu_nList_pro.do";
 
   const [breakfirst, setBreakfirst] = useState([]);
   const [lunch, setLunch] = useState([]);
