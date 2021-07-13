@@ -110,7 +110,7 @@ function App() {
         </ul>
       </div>
       <AdfitWebComponent
-      adUnit="DAN-OYlqJEfhL6dfEQp8"
+      adUnit="DAN-lbt4eC5RTpmNpdfG"
       adWidth="320"
       adHeight="50"
       />
