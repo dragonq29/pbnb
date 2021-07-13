@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/pbnb/static/css/main.dbb27b91.chunk.css",
-    "main.js": "/pbnb/static/js/main.45215967.chunk.js",
-    "main.js.map": "/pbnb/static/js/main.45215967.chunk.js.map",
+    "main.js": "/pbnb/static/js/main.73e19167.chunk.js",
+    "main.js.map": "/pbnb/static/js/main.73e19167.chunk.js.map",
     "runtime-main.js": "/pbnb/static/js/runtime-main.ece0cd4c.js",
     "runtime-main.js.map": "/pbnb/static/js/runtime-main.ece0cd4c.js.map",
     "static/js/2.ebfaa403.chunk.js": "/pbnb/static/js/2.ebfaa403.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.ece0cd4c.js",
     "static/js/2.ebfaa403.chunk.js",
     "static/css/main.dbb27b91.chunk.css",
-    "static/js/main.45215967.chunk.js"
+    "static/js/main.73e19167.chunk.js"
   ]
 }
