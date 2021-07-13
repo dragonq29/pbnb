@@ -3,6 +3,7 @@ import "./App.css";
 import gfood from "./gfood";
 import axios from "axios";
 import moment from "moment";
+import AdfitWebComponent from 'react-adfit-web-component'
 
 const today = new Date();
 const day = today.getDay();
@@ -108,6 +109,11 @@ function App() {
           ))}
         </ul>
       </div>
+      <AdfitWebComponent
+      adUnit="DAN-OYlqJEfhL6dfEQp8"
+      adWidth="320"
+      adHeight="50"
+      />
     </>
   );
 }
