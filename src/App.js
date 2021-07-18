@@ -1,41 +1,25 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
-import gfood from "./gfood";
 import axios from "axios";
-import moment from "moment";
-import AdfitWebComponent from 'react-adfit-web-component'
-
-const today = new Date();
-const day = today.getDay();
-const dayNames = [
-  "(일요일)",
-  "(월요일)",
-  "(화요일)",
-  "(수요일)",
-  "(목요일)",
-  "(금요일)",
-  "(토요일)",
-];
-const month = today.getMonth() + 1;
-const date = today.getDate();
-const pbnb = (month + day) % 2 === 0; // true : 빠밥
-const yyyymmdd = moment().format("YYYYMMDD");
+import gfood from "./gfood";
+import pbnbDate from "./pbnbDate";
+import "./App.css";
 
 function App() {
-  const URL =
-    "https://asia-northeast1-pbnb-2f164.cloudfunctions.net/menu";
-
+  const URL = "https://asia-northeast1-pbnb-2f164.cloudfunctions.net/menu";
+  
   const [breakfirst, setBreakfirst] = useState([]);
   const [lunch, setLunch] = useState([]);
   const [dinner, setDinner] = useState([]);
-
-  const requestParams = {
-    end_dt: yyyymmdd,
-    st_dt: yyyymmdd,
-    bizplc_cd: "10095",
-  };
+  const [headDateStr, setHeadDate] = useState("");
+  const [pbnb, setPbnb] = useState(null);
+  const [bizPlaceCode, setBizPlaceCode] = useState("10095");
 
   useEffect(() => {
+    console.log("refresh");
+    const {pbnb, yyyymmdd, dateStr} = pbnbDate();
+    setHeadDate(dateStr);
+    setPbnb(pbnb);
+    const requestParams = gfood(yyyymmdd, yyyymmdd, bizPlaceCode);
     axios
       .post(URL, requestParams)
       .then(function (response) {
@@ -60,15 +44,15 @@ function App() {
       .catch(function (error) {
         // 오류발생시 실행
       });
-  }, []);
+  }, [bizPlaceCode]);
 
   return (
     <>
       <div id="header">
         <h1>
-          {month}/{date} {dayNames[day]}
+          {headDateStr}
         </h1>
-        <h3>오늘은 {pbnb ? "빠밥" : "늦밥"}</h3>
+        <h3>오늘은 {pbnb != null ? (pbnb ? "빠밥" : "늦밥") : "로딩중"}</h3>
         <div></div>
         <div>조식 - 간편식</div>
         <ul>
@@ -109,11 +93,6 @@ function App() {
           ))}
         </ul>
       </div>
-      <AdfitWebComponent
-      adUnit="DAN-lbt4eC5RTpmNpdfG"
-      adWidth="320"
-      adHeight="50"
-      />
     </>
   );
 }
