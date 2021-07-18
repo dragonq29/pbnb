@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import gfood from "./gfood";
 import pbnbDate from "./pbnbDate";
+import KakaoAdFit from "./KakaoAdFit.js"
 import "./App.css";
 
 function App() {
@@ -92,6 +93,7 @@ function App() {
             <li>{menu.name}</li>
           ))}
         </ul>
+        <KakaoAdFit adunit="DAN-OYlqJEfhL6dfEQp8" adwidth="320" adheight="50"/>
       </div>
     </>
   );
