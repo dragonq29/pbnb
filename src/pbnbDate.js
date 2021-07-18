@@ -5,7 +5,8 @@ const pbnbDate = () => {
   const month = today.getMonth() + 1;
   const date = today.getDate();
   const pbnb = (month + day) % 2 === 0; // true : 빠밥
-  const yyyymmdd = today.toISOString().split("T")[0].replaceAll("-", "");
+  const korDateTimeISOStr = new Date(today.getTime() - (today.getTimezoneOffset() * 60000)).toISOString()
+  const yyyymmdd = korDateTimeISOStr.split("T")[0].replaceAll("-", "");
   const dateStr = `${month}/${date} ${dayNames[day]}`;
   return { pbnb, yyyymmdd, dateStr };
 };

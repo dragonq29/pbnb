@@ -23,7 +23,7 @@ function App() {
     const requestParams = gfood(yyyymmdd, yyyymmdd, bizPlaceCode);
     axios
       .post(URL, requestParams)
-      .then(function (response) {
+      .then((response) => {
         const dataList = response.data.todayList;
         setBreakfirst(
           dataList
@@ -59,38 +59,38 @@ function App() {
         <ul>
           {breakfirst
             .filter((menu) => menu.coner_fg === "0002")
-            .map((menu) => (
-              <li>{menu.name}</li>
+            .map((menu, index) => (
+              <li key={index}>{menu.name}</li>
             ))}
         </ul>
         <div>조식</div>
         <ul>
           {breakfirst
             .filter((menu) => menu.coner_fg === "0001")
-            .map((menu) => (
-              <li>{menu.name}</li>
+            .map((menu, index) => (
+              <li key={index}>{menu.name}</li>
             ))}
         </ul>
         <div>중식 - 간편식</div>
         <ul>
           {lunch
             .filter((menu) => menu.coner_fg === "0002")
-            .map((menu) => (
-              <li>{menu.name}</li>
+            .map((menu, index) => (
+              <li key={index}>{menu.name}</li>
             ))}
         </ul>
         <div>중식</div>
         <ul>
           {lunch
             .filter((menu) => menu.coner_fg === "0001")
-            .map((menu) => (
-              <li>{menu.name}</li>
+            .map((menu, index) => (
+              <li key={index}>{menu.name}</li>
             ))}
         </ul>
         <div>석식</div>
         <ul>
-          {dinner.map((menu) => (
-            <li>{menu.name}</li>
+          {dinner.map((menu, index) => (
+            <li key={index}>{menu.name}</li>
           ))}
         </ul>
         <KakaoAdFit adunit="DAN-OYlqJEfhL6dfEQp8" adwidth="320" adheight="50"/>
