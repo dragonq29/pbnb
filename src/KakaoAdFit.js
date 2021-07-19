@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 // 출처 : https://blog.soga.ng/story/39
-const KakaoAdFit = ({adunit, adwidth, adheight}) => {
+const KakaoAdFit = ({adUnit, adWidth, adHeight}) => {
     useEffect(() => {
         let ins = document.createElement('ins');
         let scr = document.createElement('script');
@@ -11,9 +11,9 @@ const KakaoAdFit = ({adunit, adwidth, adheight}) => {
         scr.async = 'true';
         scr.type = "text/javascript";
         scr.src = "//t1.daumcdn.net/kas/static/ba.min.js";
-        ins.setAttribute('data-ad-unit', adunit);
-        ins.setAttribute('data-ad-width', adwidth);
-        ins.setAttribute('data-ad-height', adheight);
+        ins.setAttribute('data-ad-unit', adUnit);
+        ins.setAttribute('data-ad-width', adWidth);
+        ins.setAttribute('data-ad-height', adHeight);
 
         document.querySelector('.adfit').appendChild(ins);
         document.querySelector('.adfit').appendChild(scr);
