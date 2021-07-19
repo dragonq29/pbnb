@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import gfood from "./gfood";
 import pbnbDate from "./pbnbDate";
+import KakaoAdFit from "./KakaoAdFit";
 import "./App.css";
 
 function App() {
   const URL = "https://asia-northeast1-pbnb-2f164.cloudfunctions.net/menu";
-  
+
   const [breakfirst, setBreakfirst] = useState([]);
   const [lunch, setLunch] = useState([]);
   const [dinner, setDinner] = useState([]);
@@ -16,7 +17,7 @@ function App() {
 
   useEffect(() => {
     console.log("refresh");
-    const {pbnb, yyyymmdd, dateStr} = pbnbDate();
+    const { pbnb, yyyymmdd, dateStr } = pbnbDate();
     setHeadDate(dateStr);
     setPbnb(pbnb);
     const requestParams = gfood(yyyymmdd, yyyymmdd, bizPlaceCode);
@@ -49,9 +50,7 @@ function App() {
   return (
     <>
       <div id="header">
-        <h1>
-          {headDateStr}
-        </h1>
+        <h1>{headDateStr}</h1>
         <h3>오늘은 {pbnb != null ? (pbnb ? "빠밥" : "늦밥") : "로딩중"}</h3>
         <div></div>
         <div>조식 - 간편식</div>
@@ -92,6 +91,11 @@ function App() {
             <li key={index}>{menu.name}</li>
           ))}
         </ul>
+        <KakaoAdFit
+         adUnit="DAN-lbt4eC5RTpmNpdfG" 
+         adWidth="320" 
+         adHeight="50" 
+         />
       </div>
     </>
   );
