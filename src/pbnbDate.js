@@ -1,5 +1,4 @@
-const pbnbDate = () => {
-  const today = new Date();
+const pbnbDate = (today) => {
   const day = today.getDay();
   const dayNames = ["(일)", "(월)", "(화)", "(수)", "(목)", "(금)", "(토)"];
   const month = today.getMonth() + 1;
