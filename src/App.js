@@ -6,6 +6,8 @@ import KakaoAdFit from "./KakaoAdFit";
 import { ThemeProvider } from "styled-components";
 import Button from "./Button";
 import "./App.css";
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
 
 function App() {
   const URL = "https://asia-northeast1-pbnb-2f164.cloudfunctions.net/menu";
@@ -139,11 +141,7 @@ function App() {
             <li key={index}>{menu.name}</li>
           ))}
         </ul>
-        <KakaoAdFit
-         adUnit="DAN-lbt4eC5RTpmNpdfG" 
-         adWidth="320" 
-         adHeight="50" 
-         />
+        <KakaoAdFit adUnit="DAN-lbt4eC5RTpmNpdfG" adWidth="320" adHeight="50" />
       </div>
     </ThemeProvider>
   );
