@@ -64,7 +64,7 @@ function App() {
   }, [bizPlaceCode, targetDate]);
 
   const beforeDate = () => {
-    const newDate = new Date();
+    const newDate = new Date(targetDate);
     newDate.setDate(targetDate.getDate() - 1);
     setTargetDate(newDate);
   };
@@ -75,7 +75,7 @@ function App() {
   };
 
   const nextDate = () => {
-    const newDate = new Date();
+    const newDate = new Date(targetDate);
     newDate.setDate(targetDate.getDate() + 1);
     setTargetDate(newDate);
   };
