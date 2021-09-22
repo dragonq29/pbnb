@@ -4,11 +4,16 @@ import gfood from "./gfood";
 import pbnbDate from "./pbnbDate";
 import KakaoAdFit from "./KakaoAdFit";
 import { ThemeProvider } from "styled-components";
-import Button from "./Button";
-import "./App.css";
+import Button from "./components/Button";
 import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
 import Meal from "./Meal";
+
+const palette = {
+  blue: "#228be6",
+  gray: "#496057",
+  pink: "#f06595",
+};
 
 function App() {
   const loading = [
@@ -89,48 +94,46 @@ function App() {
   };
 
   return (
-    <ThemeProvider
-      theme={{
-        palette: {
-          blue: "#228be6",
-          gray: "#495057",
-          pink: "#f06595",
-        },
-      }}
-    >
-      <div id="header">
-        <h1>{headDateStr}</h1>
-        <Button color="blue" size="large" onClick={beforeDate}>
-          Before
-        </Button>
-        <Button color="gray" size="large" onClick={todayDate}>
-          Today
-        </Button>
-        <Button color="pink" size="large" onClick={nextDate}>
-          Next
-        </Button>
-        <h2>{pbnb != null ? (pbnb ? "빠밥" : "늦밥") : "로딩중"}</h2>
-        <div></div>
+    <>
+      <ThemeProvider theme={{ palette }}>
+        <div id="header">
+          <h1>{headDateStr}</h1>
+          <Button color="blue" size="large" onClick={beforeDate}>
+            Before
+          </Button>
+          <Button color="gray" size="large" onClick={todayDate}>
+            Today
+          </Button>
+          <Button color="pink" size="large" onClick={nextDate}>
+            Next
+          </Button>
+          <h2>{pbnb != null ? (pbnb ? "빠밥" : "늦밥") : "로딩중"}</h2>
 
-        <div>조식 - 간편식</div>
-
-        <Meal
-          data={meals.breakfirst.filter((menu) => menu.coner_fg === "0002")}
-        />
-
-        <div>조식</div>
-        <Meal
-          data={meals.breakfirst.filter((menu) => menu.coner_fg === "0001")}
-        />
-        <div>중식 - 간편식</div>
-        <Meal data={meals.lunch.filter((menu) => menu.coner_fg === "0002")} />
-        <div>중식</div>
-        <Meal data={meals.lunch.filter((menu) => menu.coner_fg === "0001")} />
-        <div>석식</div>
-        <Meal data={meals.dinner} />
-        <KakaoAdFit adUnit="DAN-lbt4eC5RTpmNpdfG" adWidth="320" adHeight="50" />
-      </div>
-    </ThemeProvider>
+          <Meal
+            data={meals.breakfirst.filter((menu) => menu.coner_fg === "0002")}
+          >
+            조식 - 간편식
+          </Meal>
+          <Meal
+            data={meals.breakfirst.filter((menu) => menu.coner_fg === "0001")}
+          >
+            조식
+          </Meal>
+          <Meal data={meals.lunch.filter((menu) => menu.coner_fg === "0002")}>
+            중식 - 간편식
+          </Meal>
+          <Meal data={meals.lunch.filter((menu) => menu.coner_fg === "0001")}>
+            중식
+          </Meal>
+          <Meal data={meals.dinner}>석식</Meal>
+          <KakaoAdFit
+            adUnit="DAN-lbt4eC5RTpmNpdfG"
+            adWidth="320"
+            adHeight="50"
+          />
+        </div>
+      </ThemeProvider>
+    </>
   );
 }
 
