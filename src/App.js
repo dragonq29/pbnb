@@ -3,11 +3,17 @@ import axios from "axios";
 import gfood from "./gfood";
 import pbnbDate from "./pbnbDate";
 import KakaoAdFit from "./KakaoAdFit";
-import { ThemeProvider } from "styled-components";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import Button from "./components/Button";
 import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
 import Meal from "./components/Meal";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: #e9ecef;
+  }
+`;
 
 const palette = {
   blue: "#228be6",
@@ -95,6 +101,7 @@ function App() {
 
   return (
     <>
+      <GlobalStyle />
       <ThemeProvider theme={{ palette }}>
         <div id="header">
           <h1>{headDateStr}</h1>
