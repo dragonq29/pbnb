@@ -7,7 +7,7 @@ import { ThemeProvider } from "styled-components";
 import Button from "./components/Button";
 import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
-import Meal from "./Meal";
+import Meal from "./components/Meal";
 
 const palette = {
   blue: "#228be6",
