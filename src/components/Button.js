@@ -47,7 +47,7 @@ const StyledButton = styled.button`
 
 function Button({ children, color, size, ...rest }) {
   return (
-    <StyledButton color={color} size={size} {...rest}>
+    <StyledButton color={color} {...rest}>
       {children}
     </StyledButton>
   );

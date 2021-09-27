@@ -3,11 +3,13 @@ import axios from "axios";
 import gfood from "./gfood";
 import pbnbDate from "./pbnbDate";
 import KakaoAdFit from "./KakaoAdFit";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import PbnbTemplate from "./components/PbnbTemplate";
 import Button from "./components/Button";
 import "react-app-polyfill/ie11";
 import "react-app-polyfill/stable";
-import Meal from "./components/Meal";
+import PbnbHead from "./components/PbnbHead";
+import PbnbList from "./components/PbnbList";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -21,25 +23,22 @@ const palette = {
   pink: "#f06595",
 };
 
-function App() {
-  const loading = [
-    { name: "로딩중", coner_fg: "0001" },
-    { name: "로딩중", coner_fg: "0002" },
-    { name: "로딩중", coner_fg: "0003" },
-  ];
+const ButtonBlock = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+`;
 
-  const noBob = [
-    { name: "밥 없음", coner_fg: "0001" },
-    { name: "밥 없음", coner_fg: "0002" },
-    { name: "밥 없음", coner_fg: "0003" },
-  ];
-  const URL = "https://asia-northeast1-pbnb-2f164.cloudfunctions.net/menu";
+function App() {
+  const URL =
+    "https://asia-northeast1-pbnb-2f164.cloudfunctions.net/menu_v_2_0_0";
 
   const [targetDate, setTargetDate] = useState(new Date());
   const [meals, setMeals] = useState({
-    breakfirst: loading,
-    lunch: loading,
-    dinner: loading,
+    breakfirstList: null,
+    lunchList: null,
+    dinnerList: null,
   });
   const [headDateStr, setHeadDate] = useState("");
   const [pbnb, setPbnb] = useState(null);
@@ -51,31 +50,12 @@ function App() {
     setHeadDate(dateStr);
     setPbnb(pbnb);
     const requestParams = gfood(yyyymmdd, yyyymmdd, bizPlaceCode);
+    // const requestParams = gfood("20210916", "20210916", bizPlaceCode);
     axios
       .post(URL, requestParams)
       .then((response) => {
-        const dataList = response.data.todayList;
-        const breakfirstData = dataList
-          .filter((m) => m.meald_fg_cd === "0001")
-          .map((menu) => ({ name: menu.disp_nm, coner_fg: menu.coner_fg_cd }));
-        const lunchData = dataList
-          .filter((m) => m.meald_fg_cd === "0002")
-          .map((menu) => ({ name: menu.disp_nm, coner_fg: menu.coner_fg_cd }));
-        const dinnerData = dataList
-          .filter((m) => m.meald_fg_cd === "0003")
-          .map((menu) => ({ name: menu.disp_nm, coner_fg: menu.coner_fg_cd }));
-
-        const updatedBreakfirst =
-          breakfirstData.length === 0 ? noBob : breakfirstData;
-        const updatedLunch = lunchData.length === 0 ? noBob : lunchData;
-        const updatedDinner = dinnerData.length === 0 ? noBob : dinnerData;
-        setMeals({
-          breakfirst: updatedBreakfirst,
-          lunch: updatedLunch,
-          dinner: updatedDinner,
-        });
-        // console.log(dataList.filter(m => m.meald_fg_cd === "0003").map((menu) => ({name: menu.disp_nm})));
-        console.log("refresh2");
+        const data = response.data;
+        setMeals(data);
       })
       .catch(function (error) {
         // 오류발생시 실행
@@ -103,42 +83,22 @@ function App() {
     <>
       <GlobalStyle />
       <ThemeProvider theme={{ palette }}>
-        <div id="header">
-          <h1>{headDateStr}</h1>
-          <Button color="blue" size="large" onClick={beforeDate}>
-            Before
-          </Button>
-          <Button color="gray" size="large" onClick={todayDate}>
-            Today
-          </Button>
-          <Button color="pink" size="large" onClick={nextDate}>
-            Next
-          </Button>
-          <h2>{pbnb != null ? (pbnb ? "빠밥" : "늦밥") : "로딩중"}</h2>
-
-          <Meal
-            data={meals.breakfirst.filter((menu) => menu.coner_fg === "0002")}
-          >
-            조식 - 간편식
-          </Meal>
-          <Meal
-            data={meals.breakfirst.filter((menu) => menu.coner_fg === "0001")}
-          >
-            조식
-          </Meal>
-          <Meal data={meals.lunch.filter((menu) => menu.coner_fg === "0002")}>
-            중식 - 간편식
-          </Meal>
-          <Meal data={meals.lunch.filter((menu) => menu.coner_fg === "0001")}>
-            중식
-          </Meal>
-          <Meal data={meals.dinner}>석식</Meal>
-          <KakaoAdFit
-            adUnit="DAN-lbt4eC5RTpmNpdfG"
-            adWidth="320"
-            adHeight="50"
-          />
-        </div>
+        <PbnbTemplate>
+          <PbnbHead headDateStr={headDateStr} pbnb={pbnb} />
+          <ButtonBlock>
+            <Button color="blue" onClick={beforeDate}>
+              Before
+            </Button>
+            <Button color="gray" onClick={todayDate}>
+              Today
+            </Button>
+            <Button color="pink" onClick={nextDate}>
+              Next
+            </Button>
+          </ButtonBlock>
+          <PbnbList data={meals}></PbnbList>
+        </PbnbTemplate>
+        <KakaoAdFit adUnit="DAN-lbt4eC5RTpmNpdfG" adWidth="320" adHeight="50" />
       </ThemeProvider>
     </>
   );
