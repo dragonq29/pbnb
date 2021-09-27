@@ -1,20 +1,17 @@
 {
   "files": {
-    "main.css": "/pbnb/static/css/main.dbb27b91.chunk.css",
-    "main.js": "/pbnb/static/js/main.a3e159d2.chunk.js",
-    "main.js.map": "/pbnb/static/js/main.a3e159d2.chunk.js.map",
+    "main.js": "/pbnb/static/js/main.c79d0878.chunk.js",
+    "main.js.map": "/pbnb/static/js/main.c79d0878.chunk.js.map",
     "runtime-main.js": "/pbnb/static/js/runtime-main.ece0cd4c.js",
     "runtime-main.js.map": "/pbnb/static/js/runtime-main.ece0cd4c.js.map",
-    "static/js/2.ab51cef2.chunk.js": "/pbnb/static/js/2.ab51cef2.chunk.js",
-    "static/js/2.ab51cef2.chunk.js.map": "/pbnb/static/js/2.ab51cef2.chunk.js.map",
+    "static/js/2.589f90f3.chunk.js": "/pbnb/static/js/2.589f90f3.chunk.js",
+    "static/js/2.589f90f3.chunk.js.map": "/pbnb/static/js/2.589f90f3.chunk.js.map",
     "index.html": "/pbnb/index.html",
-    "static/css/main.dbb27b91.chunk.css.map": "/pbnb/static/css/main.dbb27b91.chunk.css.map",
-    "static/js/2.ab51cef2.chunk.js.LICENSE.txt": "/pbnb/static/js/2.ab51cef2.chunk.js.LICENSE.txt"
+    "static/js/2.589f90f3.chunk.js.LICENSE.txt": "/pbnb/static/js/2.589f90f3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ece0cd4c.js",
-    "static/js/2.ab51cef2.chunk.js",
-    "static/css/main.dbb27b91.chunk.css",
-    "static/js/main.a3e159d2.chunk.js"
+    "static/js/2.589f90f3.chunk.js",
+    "static/js/main.c79d0878.chunk.js"
   ]
 }
