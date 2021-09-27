@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const PbnbTemplateBlock = styled.div`
   width: 512px;
-  height: 768px;
+  height: 100%;
 
   position: relative;
   background: white;

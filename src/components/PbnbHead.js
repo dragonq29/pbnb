@@ -26,8 +26,7 @@ const HeadDateBlock = styled.div`
 
   h1 {
     margin: 0;
-    font-size: 36px;
-    color: 32px;
+    font-size: 3rem;
   }
 `;
 
@@ -40,7 +39,7 @@ const PbnbBlock = styled.div`
     text-align: center;
     background: #adb5bd;
     color: white;
-    font-size: 25px;
+    font-size: 35px;
     height: 40px;
     font-weight: bold;
     ${PbnbStyle}

@@ -8,6 +8,7 @@ const PbnbListBlock = styled.div`
   padding-bottom: 48px;
   overflow-y: auto;
   background: white;
+  margin-bottom: 15px;
 `;
 
 function PbnbList({ data }) {
