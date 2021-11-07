@@ -50,7 +50,7 @@ function App() {
     setHeadDate(dateStr);
     setPbnb(pbnb);
     const requestParams = gfood(yyyymmdd, yyyymmdd, bizPlaceCode);
-    // const requestParams = gfood("20210916", "20210916", bizPlaceCode);
+    // const requestParams = gfood("20211101", "20211101", bizPlaceCode);
     axios
       .post(URL, requestParams)
       .then((response) => {
