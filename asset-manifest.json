@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/pbnb/static/js/main.44640457.chunk.js",
-    "main.js.map": "/pbnb/static/js/main.44640457.chunk.js.map",
+    "main.js": "/pbnb/static/js/main.771d17c3.chunk.js",
+    "main.js.map": "/pbnb/static/js/main.771d17c3.chunk.js.map",
     "runtime-main.js": "/pbnb/static/js/runtime-main.ece0cd4c.js",
     "runtime-main.js.map": "/pbnb/static/js/runtime-main.ece0cd4c.js.map",
     "static/js/2.43a5cc6c.chunk.js": "/pbnb/static/js/2.43a5cc6c.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.ece0cd4c.js",
     "static/js/2.43a5cc6c.chunk.js",
-    "static/js/main.44640457.chunk.js"
+    "static/js/main.771d17c3.chunk.js"
   ]
 }
