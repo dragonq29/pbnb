@@ -81,7 +81,12 @@ function MealImage({ data }) {
     <>
       {imageUrl !== null ? (
         <img
-          style={{ borderRadius: "16px" }}
+          style={{
+            display: "block",
+            width: "100%",
+            height: "auto",
+            borderRadius: "16px",
+          }}
           src={imageBaseUrl + imageUrl}
           alt="사진을 불러오지 못하였습니다"
         />
