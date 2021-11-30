@@ -98,7 +98,6 @@ function App() {
           </ButtonBlock>
           <PbnbList data={meals}></PbnbList>
         </PbnbTemplate>
-        <KakaoAdFit adUnit="DAN-lbt4eC5RTpmNpdfG" adWidth="320" adHeight="50" />
       </ThemeProvider>
     </>
   );
