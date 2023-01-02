@@ -108,8 +108,7 @@ function App() {
           alt='다운로드하기 Google Play'
           src='https://play.google.com/intl/en_us/badges/static/images/badges/ko_badge_web_generic.png'
           style={{
-            height: "10vh",  
-            width: "13vw",
+            width: "200px",
           }}
           />
       </a>
