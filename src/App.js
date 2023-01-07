@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 // import axios from "axios";
 // import gfood from "./gfood";
 // import pbnbDate from "./pbnbDate";
@@ -102,17 +102,29 @@ function App() {
     // </>
     <div>
       <div>이젠 빠밥늦밥을</div>
-      <div>안드로이드 앱으로 이용 부탁드립니다~!</div>
-      <a href='https://play.google.com/store/apps/details?id=com.pbnb&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
-        <img
-          alt='다운로드하기 Google Play'
-          src='https://play.google.com/intl/en_us/badges/static/images/badges/ko_badge_web_generic.png'
-          style={{
-            width: "200px",
-          }}
+      <div>앱으로 이용 부탁드립니다~!</div>
+      <div>
+        <a href='https://play.google.com/store/apps/details?id=com.pbnb&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+          <img
+            alt='다운로드하기 Google Play'
+            src='https://play.google.com/intl/en_us/badges/static/images/badges/ko_badge_web_generic.png'
+            style={{
+              width: "200px",
+            }}
           />
-      </a>
-      <div>아이폰 앱은 조금만 더 기다려 주세요...</div>
+        </a>
+      </div>
+      <div>
+        <a href='https://apps.apple.com/kr/app/%EB%B9%A0%EB%B0%A5%EB%8A%A6%EB%B0%A5/id1662743556'>
+          <img
+            alt='다운로드하기 App Store'
+            src='https://market.bookshopmap.com/wp-content/uploads/2016/04/badge-download-on-the-app-store-kr.png'
+            style={{
+              width: "200px",
+            }}
+          />
+        </a>
+      </div>
     </div>
   );
 }
